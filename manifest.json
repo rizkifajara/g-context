@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "G-Context",
+  "version": "1.0",
+  "description": "Extract and translate text from screenshots using Google Gemini API",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "G-Context - Extract text from screenshot"
+  },
+  "commands": {
+    "capture-screenshot": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+G",
+        "mac": "Command+Shift+G"
+      },
+      "description": "Capture screenshot for text extraction"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon32.png",
+    "128": "icons/icon512.png",
+    "192": "icons/icon512.png",
+    "512": "icons/icon512.png"
+  }
+}
